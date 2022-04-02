@@ -12,7 +12,7 @@ module.exports.getAll=function(req,res){
         count=parseInt(req.query.count,10)
     }
     console.log(offset,count);
-    Game.find().exec(function(err,games){
+    Game.find().skip(offset).limit(count).exec(function(err,games){
         console.log("Games Found");
         res.status(200).json(games);
     });
